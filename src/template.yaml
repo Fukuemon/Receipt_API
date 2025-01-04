@@ -1,0 +1,24 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  ReceiptCheckerApi:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.main.handler
+      Runtime: python3.11
+      CodeUri: ./
+      MemorySize: 256
+      Timeout: 30
+      Environment:
+        Variables:
+          APP_APP_TITLE: "Receipt Check API"
+          APP_APP_VERSION: "1.0.0"
+          APP_ENVIRONMENT: "dev"
+          PYTHONPATH: "/var/task/app"
+          GAS_GET_CALENDAR_URL: ""
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
