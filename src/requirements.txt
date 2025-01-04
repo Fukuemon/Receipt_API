@@ -1,0 +1,9 @@
+pydantic
+pydantic-settings
+fastapi
+uvicorn
+requests
+pandas
+mangum
+starlette
+typing-extensions
